@@ -1,4 +1,4 @@
-# pivot-pane.wezterm
+# pivot.wezterm
 
 A WezTerm plugin to toggle pane orientation between horizontal and vertical splits.
 
