@@ -9,14 +9,11 @@ local function init()
 		auto = true,
 	}
 	dev.setup(opts)
-	
-	-- Require lib.wezterm only after dev setup to ensure require path is set
-	local _ = wezterm.plugin.require("https://github.com/chrisgve/lib.wezterm")
-	
+
 	-- Set up the config first with defaults
 	local config = require("config")
 	M.config = config.setup({})
-	
+
 	-- Set up the pivot module with the config
 	local pivot = require("pivot")
 	M.pivot = pivot.setup(M.config)
@@ -28,10 +25,10 @@ end
 function M.setup(user_config)
 	local config = require("config")
 	M.config = config.setup(user_config)
-	
+
 	-- Re-setup the pivot module with new config
 	M.pivot = require("pivot").setup(M.config)
-	
+
 	return M
 end
 
