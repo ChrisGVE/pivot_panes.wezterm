@@ -1,4 +1,4 @@
-# pivot.wezterm
+# pivot_panes.wezterm
 
 A WezTerm plugin to toggle pane orientation between horizontal and vertical splits.
 
@@ -19,7 +19,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 -- Add the plugin
-local pivot = wezterm.plugin.require("https://github.com/chrisgve/pivot.wezterm")
+local pivot_panes = wezterm.plugin.require("https://github.com/chrisgve/pivot_panes.wezterm")
 
 -- Add keybinding
 config.keys = {
@@ -27,12 +27,12 @@ config.keys = {
   {
     key = "p", 
     mods = "CTRL|SHIFT|ALT",
-    action = wezterm.action_callback(pivot.toggle_orientation_callback),
+    action = wezterm.action_callback(pivot_panes.toggle_orientation_callback),
   },
 }
 
 -- Optional: Configure the plugin
-pivot_pane.setup({
+pivot_panes.setup({
   max_scrollback_lines = 1000,
   debug = false,
   priority_apps = {
@@ -71,6 +71,8 @@ return config
     ["man"] = 5,
     ["top"] = 5,
     ["htop"] = 5,
+    ["btop"] = 5,
+    ["lazygit"] = 5,
     
     -- Low priority - complex applications with state that's hard to restore
     ["vim"] = 3,
@@ -96,14 +98,14 @@ The plugin exposes the following functions:
 
 ```lua
 -- Configure the plugin with custom settings
-pivot.setup(config_table)
+pivot_panes.setup(config_table)
 
 -- Callback function for use with wezterm.action_callback() in keybindings
-pivot.toggle_orientation_callback(window, pane)
+pivot_panes.toggle_orientation_callback(window, pane)
 
 -- Direct function to toggle orientation of a specific pane or tab
 -- If no argument is provided, uses the current active pane
-pivot.toggle_orientation(tab_or_pane)
+pivot_panes.toggle_orientation(tab_or_pane)
 ```
 
 ## How it Works
