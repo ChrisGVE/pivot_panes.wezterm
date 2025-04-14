@@ -19,7 +19,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 -- Add the plugin
-local pivot_pane = wezterm.plugin.require("https://github.com/chrisgve/pivot-pane.wezterm")
+local pivot = wezterm.plugin.require("https://github.com/chrisgve/pivot.wezterm")
 
 -- Add keybinding
 config.keys = {
@@ -27,7 +27,7 @@ config.keys = {
   {
     key = "p", 
     mods = "CTRL|SHIFT|ALT",
-    action = wezterm.action_callback(pivot_pane.toggle_orientation_callback),
+    action = wezterm.action_callback(pivot.toggle_orientation_callback),
   },
 }
 
@@ -96,14 +96,14 @@ The plugin exposes the following functions:
 
 ```lua
 -- Configure the plugin with custom settings
-pivot_pane.setup(config_table)
+pivot.setup(config_table)
 
 -- Callback function for use with wezterm.action_callback() in keybindings
-pivot_pane.toggle_orientation_callback(window, pane)
+pivot.toggle_orientation_callback(window, pane)
 
 -- Direct function to toggle orientation of a specific pane or tab
 -- If no argument is provided, uses the current active pane
-pivot_pane.toggle_orientation(tab_or_pane)
+pivot.toggle_orientation(tab_or_pane)
 ```
 
 ## How it Works
@@ -121,6 +121,16 @@ The plugin:
 - Full application state cannot be preserved for complex applications
 - Currently only works with pairs of panes (not complex layouts)
 - Scrollback preservation is limited by WezTerm's API capabilities
+
+## Contributions
+
+Suggestions, Issues, and PRs are welcome!
+
+The features currently implemented are the ones I use the most, but your workflow might differ. If you have any proposals on how to improve the plugin, please feel free to create an issue or, even better, a PR!
+
+- For bug reports, please provide steps to reproduce and relevant error messages
+- For feature requests, please explain your use case and why it would be valuable
+- For PRs, please ensure your code follows the existing style and includes appropriate documentation
 
 ## License
 
