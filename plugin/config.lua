@@ -57,7 +57,7 @@ M.config = nil
 ---@param user_config PivotConfig|nil
 ---@return PivotConfig
 function M.setup(user_config)
-	M.config = lib.table.tbl_deep_extend("force", M.default_config, user_config)
+	M.config = lib.table.tbl_deep_extend("force", M.default_config, user_config or {})
 	return M.config
 end
 
