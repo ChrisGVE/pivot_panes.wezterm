@@ -1,11 +1,13 @@
 local wezterm = require("wezterm") --[[@as Wezterm]]
+
+---@type { setup: fun(opts: table)}
 local dev = wezterm.plugin.require("https://github.com/chrisgve/dev.wezterm")
 
 local M = {}
 
 local function init()
 	local opts = {
-		keywords = { "https", "github", "chrisgve", "pivot-pane", "wezterm" },
+		keywords = { "https", "github", "chrisgve", "pivot_pane", "wezterm" },
 		auto = true,
 	}
 	dev.setup(opts)
