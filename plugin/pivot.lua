@@ -105,7 +105,7 @@ function M.can_pivot(panes)
 		return false, nil
 	end
 
-	if orientation == lib.wezterm.Orientation.UNKNOWN then
+	if orientation == "unknown" then
 		logger:debug("Cannot pivot: Could not determine pane orientation")
 		return false, nil
 	end
@@ -126,9 +126,7 @@ function M.pivot_panes(panes, current_orientation)
 	end
 
 	-- Determine target orientation (toggle)
-	local target_orientation = current_orientation == lib.wezterm.Orientation.HORIZONTAL
-			and lib.wezterm.Orientation.VERTICAL
-		or lib.wezterm.Orientation.HORIZONTAL
+	local target_orientation = current_orientation == "horizontal" and "vertical" or "horizontal"
 
 	-- Get dimensions of the combined pane area
 	local pos1 = panes[1]:get_position()
@@ -140,7 +138,7 @@ function M.pivot_panes(panes, current_orientation)
 	local sorted_panes = {}
 	local sorted_states = {}
 
-	if current_orientation == lib.wezterm.Orientation.HORIZONTAL then
+	if current_orientation == "horizontal" then
 		-- Sort by x position for horizontal orientation
 		if pos1.x < pos2.x then
 			sorted_panes = { panes[1], panes[2] }
@@ -166,7 +164,7 @@ function M.pivot_panes(panes, current_orientation)
 
 	-- Create a new pane with the new orientation
 	local new_pane
-	if target_orientation == lib.wezterm.Orientation.HORIZONTAL then
+	if target_orientation == "horizontal" then
 		-- Create horizontal split (side by side)
 		new_pane = sorted_panes[1]:split({
 			direction = "Right",
