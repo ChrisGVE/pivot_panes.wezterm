@@ -21,6 +21,8 @@ local function init()
 	M.pivot = pivot.setup(M.config)
 end
 
+init()
+
 -- Configure the plugin with custom settings
 ---@param user_config PivotConfig
 ---@return table
@@ -48,7 +50,5 @@ end
 function M.toggle_orientation(tab_or_pane)
 	return M.pivot.toggle_orientation(tab_or_pane)
 end
-
-init()
 
 return M
